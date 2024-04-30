@@ -1,0 +1,126 @@
+body {
+    background-color: #383838;
+}
+
+.navnormal {
+    background-color: #911335;
+    height: 100px;
+    border-bottom: 5px solid #250a11;
+    display: flex;
+    justify-content: space-between; /* Alinear los elementos horizontalmente */
+    align-items: center; /* Centrar verticalmente los elementos */
+}
+
+h1, h2, h3 {
+    color: #ff0000;
+}
+
+a {
+    color: #007bff;
+}
+
+button, .btn {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+button:hover, .btn:hover {
+    background-color: #218838;
+}
+
+button:active, .btn:active {
+    background-color: #1e7e34;
+}
+
+.logo img {
+    width: 200px;
+    height: 80px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input[type="text"] {
+    padding: 5px;
+    width: 200px;
+}
+
+.search-bar button {
+    padding: 5px 10px;
+    background-color: #ddd;
+    border: none;
+    cursor: pointer;
+}
+
+.user-links {
+    display: flex;
+    align-items: center;
+}
+
+.user-links a {
+    color: #fff;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+
+
+/* Estilos para las tarjetas de noticias */
+.noticia-card {
+    width: 100%;
+    height: 400px; /* Altura fija para las tarjetas de noticias */
+    margin-bottom: 25px; /* Espacio entre las tarjetas de noticias */
+}
+
+.noticia-img {
+    width: 100%;
+    height: 200px; /* Altura fija para las imágenes de noticias */
+    object-fit: cover; /* Ajuste de la imagen */
+}
+
+.noticia-body {
+    height: 150px; /* Altura fija para el cuerpo de las tarjetas de noticias */
+    overflow: hidden; /* Ocultar el texto desbordado */
+    line-height: 1.2; /* Espacio entre líneas */
+}
+
+/* Estilos para las tarjetas de juegos */
+.juego-card {
+    width: 200px; /* Ajustar el ancho de las tarjetas de juegos */
+    height: 300px; /* Altura fija para las tarjetas de juegos */
+    margin-right: 20px; /* Espacio entre las tarjetas de juegos */
+}
+
+/* Estilos para las imágenes de juegos */
+.juego-img {
+    width: 100%;
+    height: 250px; /* Altura fija para las imágenes de juegos */
+    object-fit: cover; /* Ajuste de la imagen */
+}
+
+/* Estilos para el cuerpo de las tarjetas de juegos */
+.juego-body {
+    height: 50px; /* Altura fija para el cuerpo de las tarjetas de juegos */
+    overflow: hidden; /* Ocultar el texto desbordado */
+}
+
+/* Estilos para los títulos de las noticias */
+.noticia-title {
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #d41f1f; /* Color de fuente gris oscuro */
+}
+
+/* Estilos para los títulos de los juegos */
+.juego-title {
+    font-family: 'Times New Roman', serif;
+    font-size: 18px;
+    font-weight: normal;
+    color: #0066cc; /* Color de fuente azul */
+}
