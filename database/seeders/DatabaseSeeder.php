@@ -19,11 +19,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->times(30)->create();
+        User::factory()->times(40)->create();
         $usuarios = User::all();
-        Noticia::factory()->times(10)->create();
+        Noticia::factory()->times(16)->create();
         $noticias = Noticia::all();
-        Juego::factory()->times(40)->create();
+        Juego::factory()->times(60)->create();
         $juegos = Juego::all();
 
         TipoValoracion::factory()->create([
@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
         ]);
         $valoraicon = TipoValoracion::all();
 
-        for ($i = 0; $i < 8; $i++) {
+        for ($i = 0; $i < 16; $i++) {
             $noticia = $noticias->random();
             $autor = $usuarios->random();
             ComentarioNoticia::factory()->create([
@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        for ($i = 0; $i < 25; $i++) {
+        for ($i = 0; $i < 60; $i++) {
             $juego = $juegos->random();
             $autor = $usuarios->random();
             $tipo = $valoraicon->random();
@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
         }
         $reviews = ReviewJuego::all();
 
-        for ($i = 0; $i < 12; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             $review = $reviews->random();
             $autor = $usuarios->random();
             ComentarioReview::factory()->create([
@@ -66,7 +66,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        for ($i = 0; $i < 45; $i++) {
+        for ($i = 0; $i < 200; $i++) {
             $juego = $juegos->random();
             CarruselJuego::factory()->create([
                 'juego' => $juego->id,

@@ -16,7 +16,8 @@ class CreateNoticiasTable extends Migration
             $table->string('autor_noticia', 64);
             $table->string('titulo_noticia', 128)->nullable();
             $table->string('portada_noticia', 256);
-            $table->string('texto_noticia', 4096);
+            $table->string('resumen_noticia', 512);
+            $table->string('texto_noticia', 8192);
             $table->timestamp('horapublicación_noticia')->nullable();
             $table->timestamps();
         });

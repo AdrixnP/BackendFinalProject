@@ -25,7 +25,8 @@ class NoticiaFactory extends Factory
             'autor_noticia' => $this->faker->name(),
             'titulo_noticia' => $this->faker->sentence(),
             'portada_noticia' => $this->faker->imageUrl(1512, 648),
-            'texto_noticia' => $this->faker->paragraph(5),
+            'resumen_noticia' => $this->faker->paragraph(4),
+            'texto_noticia' => $this->faker->paragraph(32),
             'horapublicación_noticia' => $this->faker->dateTime(),
         ];
     }

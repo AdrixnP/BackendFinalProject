@@ -13,12 +13,15 @@
 <body>
     <nav class="navnormal">
         <div class="container d-flex justify-content-between align-items-center">
-            <div class="align-items-center">
-                <img src="{{ asset('images/logow.png') }}" alt="Normal Smoke" width="200" height="80">
-            </div>
+            <a href="{{ route('welcome') }}">
+                <div class="align-items-center">
+                    <img src="{{ asset('images/logow.png') }}" alt="Normal Smoke" width="200" height="80">
+                </div>
+            </a>
+
             <div class="viewlinks">
-                <a href="#">Noticias</a>
-                <a href="#">Comunidad</a>
+                <a href="{{ route('noticias.index') }}">Noticias</a>
+                <a href="{{ route('comunidad.index') }}">Comunidad</a>
             </div>
             <div class="search-bar">
                 <input type="text" placeholder="Buscar...">

@@ -4,7 +4,9 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <h1 class="text-center m-5">Bienvenida</h1>
+        <div class="d-flex justify-content-center">
+            <img src="{{ asset('images/logo.png') }}" alt="Normal Smoke" width="600" height="240" class="mx-auto">
+        </div>
 
         <!-- Sección de noticias -->
         <h2 class="text-center">Noticias Recientes</h2>
@@ -16,7 +18,7 @@
                         <div class="card-body noticia-body">
                             <h3 class="noticia-title">{{ $noticia->titulo_noticia}}</notititle>
                             <h5 class="card-text">{{ $noticia->autor_noticia}}</h5>
-                            <p class="card-text">{{ $noticia->texto_noticia}}</p>
+                            <p class="card-text">{{ $noticia->resumen_noticia}}</p>
                         </div>
                     </div>
                 </div>
