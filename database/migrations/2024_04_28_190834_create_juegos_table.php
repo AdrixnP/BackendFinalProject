@@ -21,7 +21,7 @@ class CreateJuegosTable extends Migration
             $table->string('portada_juego', 256);
             $table->dateTime('fechasalida_juego');
             $table->string('desarrollador_juego', 50);
-            $table->string('genero_juego', 50);
+            $table->foreignId('genero_juego')->constrained('generosjuegos');
             $table->string('link_compra_juego', 256);
             $table->timestamps();
         });

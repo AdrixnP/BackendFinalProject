@@ -20,11 +20,6 @@ class JuegoFactory extends Factory
      */
     public function definition()
     {
-        $generos = [
-            'Simulación', 'Tiros', 'Estrategia', 'Acción y Aventura',
-            'Clásicos', 'Juegos de Rol', 'Juegos de Mesa', 'Plataformas',
-            'Familiares', 'Lucha', 'Independientes', 'Carreras', 'Deportes', 'Puzles'
-        ];
 
         return [
             'nombre_juego' => $this->faker->name,
@@ -33,7 +28,7 @@ class JuegoFactory extends Factory
             'portada_juego' => $this->faker->imageUrl(540, 960),
             'fechasalida_juego' => $this->faker->dateTimeThisYear,
             'desarrollador_juego' => $this->faker->company,
-            'genero_juego' => $this->faker->randomElement($generos),
+            'genero_juego' => $this->faker->randomNumber(),
             'link_compra_juego' => $this->faker->url,
         ];
     }

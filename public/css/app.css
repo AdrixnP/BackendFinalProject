@@ -124,3 +124,19 @@ button:active, .btn:active {
     font-weight: normal;
     color: #0066cc; /* Color de fuente azul */
 }
+
+.genero-card {
+    width: 200px; /* Tamaño específico para el card */
+}
+
+.genero-body {
+    display: flex;
+    align-items: center; /* Centra verticalmente el contenido */
+}
+
+.genero-img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    margin-right: 16px; /* Espacio entre la imagen y el texto */
+}

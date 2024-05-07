@@ -9,7 +9,7 @@ class NoticiaController extends Controller
     public function index()
     {
         // Obtener las noticias destacadas (las 8 más recientes)
-        $noticiasDestacadas = Noticia::orderBy('horapublicación_noticia', 'desc')->take(8)->get();
+        $noticiasDestacadas = Noticia::orderBy('horapublicación_noticia', 'desc')->take(6)->get();
 
         // Obtener todas las noticias restantes (a partir de la novena)
         $noticiasRestantes = Noticia::orderBy('horapublicación_noticia', 'desc')->get();

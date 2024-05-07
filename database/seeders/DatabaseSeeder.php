@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\CarruselJuego;
 use App\Models\ComentarioNoticia;
 use App\Models\ComentarioReview;
+use App\Models\Generojuego;
 use App\Models\Juego;
 use App\Models\Noticia;
 use App\Models\ReviewJuego;
@@ -19,11 +20,29 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->times(40)->create();
+        User::factory()->times(800)->create();
         $usuarios = User::all();
-        Noticia::factory()->times(16)->create();
+        Noticia::factory()->times(200)->create();
         $noticias = Noticia::all();
-        Juego::factory()->times(60)->create();
+
+        $generos = [
+            'Simulación', 'Tiros', 'Estrategia', 'Acción y Aventura',
+            'Clásicos', 'Juegos de Rol', 'Juegos de Mesa', 'Plataformas',
+            'Familiares', 'Lucha', 'Indie', 'Carreras', 'Deportes', 'Puzles'
+        ];
+        foreach ($generos as $genero) {
+            Generojuego::factory()->create([
+                'nombre' => $genero,
+            ]);
+        }
+        $generotabla = Generojuego::all();
+
+        for ($i = 0; $i < 600; $i++) {
+            $generoselect = $generotabla->random();
+            Juego::factory()->create([
+                'genero_juego' => $generoselect->id,
+            ]);
+        }
         $juegos = Juego::all();
 
         TipoValoracion::factory()->create([
@@ -36,7 +55,7 @@ class DatabaseSeeder extends Seeder
         ]);
         $valoraicon = TipoValoracion::all();
 
-        for ($i = 0; $i < 16; $i++) {
+        for ($i = 0; $i < 80; $i++) {
             $noticia = $noticias->random();
             $autor = $usuarios->random();
             ComentarioNoticia::factory()->create([
@@ -45,7 +64,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        for ($i = 0; $i < 60; $i++) {
+        for ($i = 0; $i < 1200; $i++) {
             $juego = $juegos->random();
             $autor = $usuarios->random();
             $tipo = $valoraicon->random();
@@ -57,7 +76,7 @@ class DatabaseSeeder extends Seeder
         }
         $reviews = ReviewJuego::all();
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             $review = $reviews->random();
             $autor = $usuarios->random();
             ComentarioReview::factory()->create([
@@ -66,7 +85,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        for ($i = 0; $i < 200; $i++) {
+        for ($i = 0; $i < 2400; $i++) {
             $juego = $juegos->random();
             CarruselJuego::factory()->create([
                 'juego' => $juego->id,
