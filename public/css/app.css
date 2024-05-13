@@ -140,3 +140,10 @@ button:active, .btn:active {
     object-fit: cover;
     margin-right: 16px; /* Espacio entre la imagen y el texto */
 }
+
+.user-avatar {
+    width: 48x;
+    height: 48px;
+    border: 2px solid #5c5c5c;
+    border-radius: 10%;
+}

@@ -28,12 +28,21 @@
                 <button type="submit">Buscar</button>
             </div>
             <div class="user-links">
-                <a href="#">Iniciar Sesión</a>
-                <a href="#">Perfil</a>
+                @if (Route::has('login'))
+                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                    @auth
+                        <div class="flex items-center space-x-4">
+                            <img src="{{ Auth::user()->foto_usuario ? Auth::user()->foto_usuario : asset('images/defaultuser.png') }}" alt="Foto de perfil" class="user-avatar">
+                            <span class="text-sm text-gray-700 dark:text-gray-500">{{ Auth::user()->name }}</span>
+                        </div>
+                    @else
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                    @endauth
+                </div>
+                @endif
             </div>
         </div>
     </nav>
-
 
     <div class="container mt-5">
         @yield('content')

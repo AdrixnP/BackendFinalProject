@@ -1,7 +1,3 @@
-<head>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-</head>
-
 @extends('layouts.app')
 
 @section('content')
@@ -11,11 +7,52 @@
         <div class="row">
             <div class="col">
                 <div class="juegos-container d-flex overflow-auto">
-                    <!-- Tarjetas de juegos aquí -->
                     @foreach($juegosDestacados as $juego)
                     <div class="col-md-6 col-lg-4 col-xl-2 mb-4">
                         <div class="card juego-card">
+                        <a href="{{ route('juego.show', ['nombre' => $juego->nombre_juego]) }}">
                             <img src="{{ $juego->portada_juego }}" class="card-img-top juego-img" alt="...">
+                            <div class="card-body juego-body">
+                            <h3 class="juego-title">{{ $juego->nombre_juego }}</h3>
+                        </div>
+                        </a>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <h2>Géneros</h2>
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                @foreach($generos as $genero)
+                <div class="col-md-2">
+                    <form action="{{ route('comunidad.index') }}" method="GET">
+                        <input type="hidden" name="id" value="{{ $genero->id }}">
+                        <button type="submit" class="btn btn-primary w-100" style="background-color: {{ $genero->color }}">
+                            <img src="{{ $genero->imagen }}" class="card-img-top genero-img" alt="{{ $genero->nombre }}">
+                            <h6 class="card-title genero-title" style="font-size: 1rem; color: white; font-weight: bold;">{{ $genero->nombre }}</h6>
+                        </button>
+                    </form>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col">
+            <h2>{{ $nombreGeneroSeleccionado }}</h2>
+            @if(empty($juegosPorGenero))
+                <h2>Selecciona un género para mostrar los juegos.</h2>
+            @else
+                <div id="juegos-container" class="juegos-container d-flex overflow-auto">
+                    <!-- Aquí se mostrarán los juegos por género -->
+                    @foreach($juegosPorGenero as $juego)
+                    <div class="col-md-6 col-lg-4 col-xl-2 mb-4">
+                        <div class="card juego-card">
+                            <img src="{{ $juego->portada_juego }}" class="card-img-top juego-img" alt="{{ $juego->nombre_juego }}">
                             <div class="card-body juego-body">
                                 <h3 class="juego-title">{{ $juego->nombre_juego }}</h3>
                             </div>
@@ -23,25 +60,10 @@
                     </div>
                     @endforeach
                 </div>
-            </div>
-        </div>
-    <div class="row mt-4">
-        <h2>Géneros</h2>
-        <div class="container">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                @foreach($generos as $genero)
-                <div class="col-md-2">
-                    <div class="card genero-card" style="background-color: {{ $genero->color }}">
-                        <div class="card-body genero-body">
-                            <img src="{{ $genero->imagen }}" class="card-img-top genero-img" alt="{{ $genero->nombre }}">
-                            <h6 class="card-title genero-title" style="font-size: 1rem; color: white; font-weight: bold;">{{ $genero->nombre }}</h6>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
+            @endif
         </div>
     </div>
+
     <div class="container">
         <h2>Juegos</h2>
         <div class="row">

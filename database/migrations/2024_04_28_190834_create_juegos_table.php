@@ -19,6 +19,7 @@ class CreateJuegosTable extends Migration
             $table->unsignedTinyInteger('valoracion_juego');
             $table->string('descripcion_juego', 512);
             $table->string('portada_juego', 256);
+            $table->string('banner_juego', 256);
             $table->dateTime('fechasalida_juego');
             $table->string('desarrollador_juego', 50);
             $table->foreignId('genero_juego')->constrained('generosjuegos');

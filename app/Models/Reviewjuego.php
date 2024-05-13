@@ -18,5 +18,6 @@ class ReviewJuego extends Model
         'texto_review',
         'tipo_review',
         'estrellas_review',
+        'created_at', // Agregando el campo created_at
     ];
 }
