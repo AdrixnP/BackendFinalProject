@@ -17,7 +17,7 @@ class CreateComentariosNoticiasTable extends Migration
             $table->id();
             $table->foreignId('autor_comentario')->constrained('users');
             $table->foreignId('noticia')->constrained('noticias');
-            $table->string('texto_comentario', 1024); // Nombre de columna en minúsculas
+            $table->string('texto_comentario', 2048); // Nombre de columna en minúsculas
             $table->timestamps();
         });
     }

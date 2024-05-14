@@ -11,7 +11,7 @@
                 <div class="row g-0">
                     <!-- Imagen del juego -->
                     <div class="col-md-9">
-                        <img src="{{ $juego->banner_juego }}" class="card-img-top img-fluid" alt="{{ $juego->nombre_juego }}">
+                        <img src="{{ $juego->banner_juego }}" class="card-img-top img-fluid" alt="{{ $juego->nombre_juego }}" style="width: 384px; height: 216px;">
                     </div>
                     <!-- Cuadro de valoración -->
                     <div class="col-md-2 d-flex justify-content-center align-items-center">
@@ -26,9 +26,16 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $juego->nombre_juego }}</h5>
                         <p class="card-text">{{ $juego->descripcion_juego }}</p>
-                        <p class="card-text">Fecha de salida: {{ $juego->fechasalida_juego}}</p>
+                        <p class="card-text">Fecha de salida: {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $juego->fechasalida_juego)->format('d/m/Y') }}</p>
                         <p class="card-text">Desarrollador: {{ $juego->desarrollador_juego }}</p>
-                        <p class="card-text">{{ $juego->genero_juego }}</p>
+                        @if ($juego->genero_juego)
+                        @php
+                        $genero = App\Models\Generojuego::find($juego->genero_juego);
+                        @endphp
+                        @if ($genero)
+                            <p class="card-text">Género: {{ $genero->nombre }}</p>
+                        @endif
+                        @endif
                         <div class="card-text"><a href="{{ $juego->link_compra_juego }}">Comprar</a></div>
                     </div>
                 </div>
@@ -71,7 +78,7 @@
             </div>
             <div class="mb-3">
                 <label for="texto" class="form-label">Texto</label>
-                <textarea class="form-control" id="texto" name="texto" rows="3"></textarea>
+                <textarea class="form-control" id="texto" name="texto" rows="3" maxlength="8192"></textarea>
             </div>
             <div class="mb-3">
                 <label for="tipo_review" class="form-label">Tipo de Valoración</label>
@@ -93,22 +100,22 @@
     <!-- Reseñas del juego -->
     <div class="row mt-4">
     <h2>Reseñas del Juego</h2>
-    <ul class="list-group">
-        @foreach($reviews as $review)
+<ul class="list-group">
+    @foreach($reviews as $review)
         <li class="list-group-item d-flex">
             <!-- Columna izquierda (autor de la reseña) -->
             <div class="col-3">
                 <div class="d-flex flex-column align-items-center">
                     @foreach($autores as $autor)
                         @if($autor->id === $review->autor_review)
-                        @if ($autor->foto_usuario)
-                            <img src="{{ $autor->foto_usuario }}" alt="{{ $autor->name }}" class="img-fluid" style="max-width: 80px;">
-                        @else
-                            <img src="{{ asset('images/defaultuser.png') }}" alt="Usuario sin foto" class="img-fluid" style="max-width: 80px;">
-                        @endif
+                            @if ($autor->foto_usuario)
+                                <img src="{{ $autor->foto_usuario }}" alt="{{ $autor->name }}" class="img-fluid" style="max-width: 80px;">
+                            @else
+                                <img src="{{ asset('images/defaultuser.png') }}" alt="Usuario sin foto" class="img-fluid" style="max-width: 80px;">
+                            @endif
                             <p>{{ $autor->name }}</p>
                             <!-- Mostrar la fecha de publicación (creación) de la reseña -->
-                            <p>Publicado: {{ $review->created_at->format('d/m/Y') }}</p>
+                            <p>{{ $review->created_at->locale('es')->diffForHumans() }}</p>
                         @endif
                     @endforeach
                 </div>
@@ -128,19 +135,22 @@
                     <!-- Título y contenido de la reseña -->
                     <div>
                         <h5>{{ $review->titulo_review }}</h5>
-                        <p>{{ $review->texto_review }}</p>
+                        <!-- Aplicar estilos CSS para limitar el tamaño y agregar desbordamiento al texto de la reseña -->
+                        <p style="max-height: 100px; overflow-y: auto;">{{ $review->texto_review }}</p>
                         <!-- Botón de votación por la reseña -->
                         <div class="d-flex align-items-center">
                             <img src="/images/estrella.png" alt="Estrella" style="max-width: 24px;">
                             <p class="ms-2">{{ $review->estrellas_review }}</p>
+                            <a href="{{ route('review.show', ['id' => $review->id]) }}">Ver reseña</a>
                         </div>
                     </div>
                 </div>
             </div>
         </li>
-        @endforeach
-    </ul>
-    </div>
+    @endforeach
+</ul>
+</div>
+
 
 </div>
 @endsection

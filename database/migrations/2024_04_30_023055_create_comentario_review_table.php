@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('autor_comentario')->constrained('users');
             $table->foreignId('review_id')->constrained('review_juegos'); // Cambiado a 'review_id'
-            $table->string('Texto_comentario', 1024);
+            $table->string('Texto_comentario', 2048);
             $table->timestamps();
         });
     }

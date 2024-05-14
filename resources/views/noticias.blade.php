@@ -34,19 +34,22 @@
             <!-- Noticias restantes en dos columnas -->
             <h2 class="text-center">Noticias publicadas</h2>
             <div class="row mt-4">
-                @foreach($noticiasRestantes as $noticia)
-                <div class="col-md-6">
-                        <div class="card noticia-card">
-                        <img src="{{ $noticia->portada_noticia}}" class="card-img-top noticia-img" alt="...">
-                        <div class="card-body noticia-body">
-                            <h3 class="noticia-title">{{ $noticia->titulo_noticia}}</notititle>
-                            <h5 class="card-text">{{ $noticia->autor_noticia}}</h5>
-                            <p class="card-text">{{ $noticia->resumen_noticia}}</p>
-                        </div>
+            @foreach($noticiasRestantes as $noticia)
+            <div class="col-md-6">
+            <a href="{{ route('news.show', ['id' => $noticia->id]) }}" class="card-link">
+                <div class="card noticia-card">
+                    <img src="{{ $noticia->portada_noticia }}" class="card-img-top noticia-img" alt="...">
+                    <div class="card-body noticia-body">
+                        <h3 class="noticia-title">{{ $noticia->titulo_noticia }}</h3>
+                        <h5 class="card-text">{{ $noticia->autor_noticia }}</h5>
+                        <p class="card-text">{{ $noticia->resumen_noticia }}</p>
                     </div>
                 </div>
-                @endforeach
+            </a>
             </div>
+            @endforeach
+            </div>
+
         </div>
     </div>
 </div>

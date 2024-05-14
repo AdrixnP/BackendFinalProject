@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('autor_review')->constrained('users');
             $table->foreignId('juego')->constrained('juegos');
             $table->string('titulo_review', 128);
-            $table->string('texto_review', 1024);
+            $table->string('texto_review', 4096);
             $table->foreignId('tipo_review')->constrained('tipo_valoracions');
             $table->unsignedInteger('estrellas_review');
             $table->timestamps();

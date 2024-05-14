@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CarruselJuego;
+use App\Models\Generojuego;
 use App\Models\Juego;
 use App\Models\ReviewJuego;
 use App\Models\TipoValoracion;
@@ -28,7 +29,12 @@ class JuegoController extends Controller
         // Obtener los autores de las reseñas
         $autores = User::whereIn('id', $reviews->pluck('autor_review'))->get();
 
+        $generos = Generojuego::all();
+
+        $nombreJuego = "Nombre del juego"; // Asigna el nombre del juego adecuado
+        $id = $juego->id;
+
         // Pasar los datos a la vista
-        return view('juegoinfo', compact('juego', 'imagenesJuego', 'reviews', 'tiposValoracion', 'autores'));
+        return view('juegoinfo', compact('juego', 'imagenesJuego', 'reviews', 'tiposValoracion', 'autores', 'nombreJuego', 'id', 'generos'));
     }
 }

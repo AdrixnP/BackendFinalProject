@@ -11,6 +11,7 @@ use App\Models\Noticia;
 use App\Models\ReviewJuego;
 use App\Models\TipoValoracion;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -37,7 +38,19 @@ class DatabaseSeeder extends Seeder
         }
         $generotabla = Generojuego::all();
 
-        for ($i = 0; $i < 120; $i++) {
+        Juego::create([
+            'nombre_juego' => 'Fallout 76',
+            'valoracion_juego' => 0,
+            'descripcion_juego' => 'Bethesda Game Studios te da la bienvenida a Fallout 76. Veinticinco años después de la caída de las bombas, saldrás junto a los demás moradores del refugio a la América posnuclear. Explora un amplio Yermo en este juego multijugador de mundo abierto que completa la historia de Fallout.',
+            'portada_juego' => 'https://www.gamespot.com/a/uploads/scale_tiny/box/3/8/2/2/482770-673822.jpg',
+            'banner_juego' => 'https://cdn.cloudflare.steamstatic.com/steam/apps/1151340/header.jpg?t=1715002034',
+            'fechasalida_juego' => Carbon::createFromFormat('Y-m-d', '2020-04-14')->format('Y-m-d'),
+            'desarrollador_juego' => 'Bethesda Game Studios',
+            'genero_juego' => 6,
+            'link_compra_juego' => 'https://store.steampowered.com/app/1151340/Fallout_76/',
+        ]);
+
+        for ($i = 0; $i < 4; $i++) {
             $generoselect = $generotabla->random();
             Juego::factory()->create([
                 'genero_juego' => $generoselect->id,
@@ -55,7 +68,7 @@ class DatabaseSeeder extends Seeder
         ]);
         $valoraicon = TipoValoracion::all();
 
-        for ($i = 0; $i < 8; $i++) {
+        for ($i = 0; $i < 0; $i++) {
             $noticia = $noticias->random();
             $autor = $usuarios->random();
             ComentarioNoticia::factory()->create([
@@ -64,7 +77,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        for ($i = 0; $i < 12; $i++) {
+        for ($i = 0; $i < 0; $i++) {
             $juego = $juegos->random();
             $autor = $usuarios->random();
             $tipo = $valoraicon->random();
@@ -76,7 +89,7 @@ class DatabaseSeeder extends Seeder
         }
         $reviews = ReviewJuego::all();
 
-        for ($i = 0; $i < 3; $i++) {
+        for ($i = 0; $i < 0; $i++) {
             $review = $reviews->random();
             $autor = $usuarios->random();
             ComentarioReview::factory()->create([
@@ -85,7 +98,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        for ($i = 0; $i < 24; $i++) {
+        for ($i = 0; $i < 76; $i++) {
             $juego = $juegos->random();
             CarruselJuego::factory()->create([
                 'juego' => $juego->id,

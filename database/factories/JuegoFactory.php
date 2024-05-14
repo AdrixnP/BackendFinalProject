@@ -23,7 +23,7 @@ class JuegoFactory extends Factory
 
         return [
             'nombre_juego' => $this->faker->name,
-            'valoracion_juego' => $this->faker->numberBetween(0, 100),
+            'valoracion_juego' => $this->faker->numberBetween(0, 0),
             'descripcion_juego' => $this->faker->paragraph,
             'portada_juego' => $this->faker->imageUrl(540, 960),
             'banner_juego' => $this->faker->imageUrl(960, 540),
@@ -32,5 +32,6 @@ class JuegoFactory extends Factory
             'genero_juego' => $this->faker->randomNumber(),
             'link_compra_juego' => $this->faker->url,
         ];
+
     }
 }
