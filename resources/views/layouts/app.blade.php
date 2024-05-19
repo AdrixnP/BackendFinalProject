@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset ("css/app.css") }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 
 <body>
@@ -31,16 +31,20 @@
             </div>
             <div class="user-links">
                 @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <div class="flex items-center space-x-4">
-                            <img src="{{ Auth::user()->foto_usuario ? Auth::user()->foto_usuario : asset('images/defaultuser.png') }}" alt="Foto de perfil" class="user-avatar">
-                            <span class="text-sm text-gray-700 dark:text-gray-500">{{ Auth::user()->name }}</span>
-                        </div>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-                    @endauth
-                </div>
+                    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                        @auth
+                            <div class="flex items-center space-x-4">
+                                <a href="{{ route('profile.edit') }}" class="flex items-center space-x-4">
+                                    <img src="{{ Auth::user()->foto_usuario ? Auth::user()->foto_usuario : asset('images/defaultuser.png') }}"
+                                        alt="Foto de perfil" class="user-avatar">
+                                    <span class="text-sm text-gray-700 dark:text-gray-500">{{ Auth::user()->name }}</span>
+                                </a>
+                            </div>
+                        @else
+                            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log
+                                in</a>
+                        @endauth
+                    </div>
                 @endif
             </div>
         </div>
