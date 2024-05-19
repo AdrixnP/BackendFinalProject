@@ -24,8 +24,10 @@
                 <a href="{{ route('comunidad.index') }}">Comunidad</a>
             </div>
             <div class="search-bar">
-                <input type="text" placeholder="Buscar...">
-                <button type="submit">Buscar</button>
+                <form action="{{ route('buscar') }}" method="GET">
+                    <input type="text" name="q" placeholder="Buscar...">
+                    <button type="submit">Buscar</button>
+                </form>
             </div>
             <div class="user-links">
                 @if (Route::has('login'))

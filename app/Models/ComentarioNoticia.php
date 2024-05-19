@@ -17,3 +17,4 @@ class ComentarioNoticia extends Model
         'texto_comentario',
     ];
 }
+

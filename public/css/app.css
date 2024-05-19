@@ -12,11 +12,11 @@ body {
 }
 
 h1, h2, h3 {
-    color: #ff0000;
+    color: #ca000093;
 }
 
 a {
-    color: #007bff;
+    color: #00346b;
 }
 
 button, .btn {
@@ -96,6 +96,12 @@ button:active, .btn:active {
     margin-right: 20px; /* Espacio entre las tarjetas de juegos */
 }
 
+.juegoperfil-card {
+    width: 300px; /* Ajustar el ancho de las tarjetas de juegos */
+    height: 200px; /* Altura fija para las tarjetas de juegos */
+    margin-right: 20px; /* Espacio entre las tarjetas de juegos */
+}
+
 /* Estilos para las imágenes de juegos */
 .juego-img {
     width: 100%;
@@ -103,9 +109,20 @@ button:active, .btn:active {
     object-fit: cover; /* Ajuste de la imagen */
 }
 
+.juegoperfil-img {
+    width: 100%;
+    height: 150px; /* Altura fija para las imágenes de juegos */
+    object-fit: cover; /* Ajuste de la imagen */
+}
+
 /* Estilos para el cuerpo de las tarjetas de juegos */
 .juego-body {
     height: 50px; /* Altura fija para el cuerpo de las tarjetas de juegos */
+    overflow: hidden; /* Ocultar el texto desbordado */
+}
+
+.juegoperfil-body {
+    height: 35px; /* Altura fija para el cuerpo de las tarjetas de juegos */
     overflow: hidden; /* Ocultar el texto desbordado */
 }
 
