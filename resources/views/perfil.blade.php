@@ -4,18 +4,18 @@
     <div class="container">
         <div class="row">
             <!-- Columna izquierda -->
-            <div class="col-md-4 text-center">
-                @if ($usuario->foto_usuario)
-                    <img src="{{ $usuario->foto_usuario }}" alt="{{ $usuario->name }}" class="img-fluid mb-3"
-                        style="max-width: 150px;">
-                @else
-                    <img src="{{ asset('images/defaultuser.png') }}" alt="Usuario sin foto" class="img-fluid mb-3"
-                        style="max-width: 150px;">
-                @endif
-                <h2>{{ $usuario->name }}</h2>
-                <p>Fecha de registro: {{ $usuario->created_at->format('d/m/Y') }}</p>
-                <p>Cantidad de reseñas: {{ $reseñas->count() }}</p>
-            </div>
+            <div class="col-md-4 text-center" style="font-family: Arial, sans-serif; color: #ff69ac; background-color: #911335; padding: 20px; border-radius: 8px;">
+    @if ($usuario->foto_usuario)
+        <img src="{{ $usuario->foto_usuario }}" alt="{{ $usuario->name }}" class="img-fluid mb-3"
+            style="max-width: 150px;" class="user-avatar">
+    @else
+        <img src="{{ asset('images/defaultuser.png') }}" alt="Usuario sin foto" class="img-fluid mb-3"
+            style="max-width: 150px;" class="user-avatar">
+    @endif
+    <h2 style="font-size: 28px; font-weight: bold; color:#ff69ac">{{ $usuario->name }}</h2>
+    <p style="font-size: 18px; color: white;">Fecha de registro: {{ $usuario->created_at->format('d/m/Y') }}</p>
+    <p style="font-size: 18px; color: white;">Cantidad de reseñas: {{ $reseñas->count() }}</p>
+</div>
 
             <!-- Columna derecha -->
             <div class="col-md-8">
@@ -40,10 +40,11 @@
                                                                     <img src="{{ asset($tipo->imagen_val) }}"
                                                                         alt="{{ $tipo->nombre_val }}"
                                                                         style="max-width: 48px;">
-                                                                    <p class="ms-2 mb-0">{{ $tipo->nombre_val }}</p>
+                                                                    <h3 class="ms-2 mb-0">{{ $tipo->nombre_val }}</h3>
                                                                 @endif
                                                             @endforeach
-                                                            <p>{{ $review->created_at->locale('es')->diffForHumans() }}</p>
+                                                            <p style="color: white;">.....</p>
+                                                            <p style="font-style: italic; text-align: right; margin-right: 20px;">{{ $review->created_at->locale('es')->diffForHumans() }}</p>
                                                         </div>
                                                         <!-- Título y contenido de la reseña -->
                                                         <div>

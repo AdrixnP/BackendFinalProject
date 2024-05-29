@@ -20,8 +20,9 @@
             </a>
 
             <div class="viewlinks">
-                <a href="{{ route('noticias.index') }}">Noticias</a>
-                <a href="{{ route('comunidad.index') }}">Comunidad</a>
+                <a href="{{ route('noticias.index') }}" style="color: white; font-weight: bold; font-family: Arial, sans-serif; font-size: 18px;">Noticias</a>
+                <a> --- </a>
+                <a href="{{ route('comunidad.index') }}" style="color: white; font-weight: bold; font-family: Arial, sans-serif; font-size: 18px;">Comunidad</a>
             </div>
             <div class="search-bar">
                 <form action="{{ route('buscar') }}" method="GET">

@@ -5,13 +5,13 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <h1>{{ $noticia->titulo_noticia }}</h1>
-                <p>Publicado por: {{ $noticia->autor_noticia }}</p>
-                <p>Fecha de publicación: {{ \Carbon\Carbon::parse($noticia->horapublicación_noticia)->format('d/m/Y') }}</p>
-
+                <p style="font-size: 30px; font-weight: bold;">Publicado por: {{ $noticia->autor_noticia }}</p>
+                <p style="font-size: 24px; font-weight: bold;">Fecha de publicación: {{ \Carbon\Carbon::parse($noticia->horapublicación_noticia)->format('d/m/Y') }}</p>
+                <p style="font-size: 18px;">{{ $noticia->resumen_noticia }}</p>
                 <div class="mb-3">
                     <img src="{{ $noticia->portada_noticia }}" class="img-fluid" alt="{{ $noticia->titulo_noticia }}">
                 </div>
-                <p>{{ $noticia->texto_noticia }}</p>
+                <p style="font-size: 18px;">{{ $noticia->texto_noticia }}</p>
             </div>
         </div>
         <h3>Comentarios</h3>
@@ -51,7 +51,7 @@
                 @csrf
                 <input type="hidden" name="noticia" value="{{ $noticia->id }}">
                 <div class="mb-3">
-                    <label for="texto" class="form-label">Comentario</label>
+                    <label for="texto" class="form-label">Subir nuevo comentario</label>
                     <textarea class="form-control" id="texto" name="texto" rows="3"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Enviar Comentario</button>

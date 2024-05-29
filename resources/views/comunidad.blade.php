@@ -52,6 +52,7 @@
                     @foreach($juegosPorGenero as $juego)
                     <div class="col-md-6 col-lg-4 col-xl-2 mb-4">
                         <div class="card juego-card">
+                        <a href="{{ route('juego.show', ['nombre' => $juego->nombre_juego]) }}">
                             <img src="{{ $juego->portada_juego }}" class="card-img-top juego-img" alt="{{ $juego->nombre_juego }}">
                             <div class="card-body juego-body">
                                 <h3 class="juego-title">{{ $juego->nombre_juego }}</h3>

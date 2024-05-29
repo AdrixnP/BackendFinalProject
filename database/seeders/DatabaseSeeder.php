@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
     {
         User::factory()->times(5)->create();
         $usuarios = User::all();
-        Noticia::factory()->times(3)->create();
+        Noticia::factory()->times(6)->create();
         $noticias = Noticia::all();
 
         $generos = [
@@ -50,7 +50,31 @@ class DatabaseSeeder extends Seeder
             'link_compra_juego' => 'https://store.steampowered.com/app/1151340/Fallout_76/',
         ]);
 
-        for ($i = 0; $i < 4; $i++) {
+        Juego::create([
+            'nombre_juego' => 'Doom Ethernal',
+            'valoracion_juego' => 0,
+            'descripcion_juego' => 'Los ejércitos del infierno han invadido la Tierra. Ponte en la piel del Slayer en una épica campaña para un jugador y cruza dimensiones para detener la destrucción definitiva de la humanidad. No le tienen miedo a nada... salvo a ti.',
+            'portada_juego' => 'https://image.api.playstation.com/vulcan/ap/rnd/202010/0114/b4Q1XWYaTdJLUvRuALuqr0wP.png',
+            'banner_juego' => 'https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/782330/header.jpg?t=1702308063',
+            'fechasalida_juego' => Carbon::createFromFormat('Y-m-d', '2020-03-12')->format('Y-m-d'),
+            'desarrollador_juego' => 'Id Software',
+            'genero_juego' => 2,
+            'link_compra_juego' => 'https://store.steampowered.com/app/782330/DOOM_Eternal/',
+        ]);
+
+        Juego::create([
+            'nombre_juego' => 'Sims 4',
+            'valoracion_juego' => 0,
+            'descripcion_juego' => 'Disfruta del poder de crear y controlar a personas en un mundo virtual donde no hay reglas. ¡Ejerce tu poder con total libertad, diviértete y juega a la vida!',
+            'portada_juego' => 'https://upload.wikimedia.org/wikipedia/en/7/7f/Sims4_Rebrand.png',
+            'banner_juego' => 'https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1222670/header.jpg?t=1713460079',
+            'fechasalida_juego' => Carbon::createFromFormat('Y-m-d', '2014-09-2')->format('Y-m-d'),
+            'desarrollador_juego' => 'Maxis',
+            'genero_juego' => 1,
+            'link_compra_juego' => 'https://store.steampowered.com/app/1222670/The_Sims_4/?l=spanish',
+        ]);
+
+        for ($i = 0; $i < 7; $i++) {
             $generoselect = $generotabla->random();
             Juego::factory()->create([
                 'genero_juego' => $generoselect->id,

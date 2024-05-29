@@ -16,10 +16,19 @@
                         </div>
                         <!-- Cuadro de valoración -->
                         <div class="col-md-2 d-flex justify-content-center align-items-center">
-                            <div class="border border-primary rounded-pill p-2" style="width: 64px; height: 64px;">
-                                <p class="mb-0">{{ $juego->valoracion_juego }}</p>
-                            </div>
-                        </div>
+    <div class="border border-primary rounded-pill p-2" style="width: 64px; height: 64px;">
+        <p class="mb-0" style="color: 
+            @if($juego->valoracion_juego < 50)
+                red;
+            @elseif($juego->valoracion_juego >= 50 && $juego->valoracion_juego <= 70)
+                yellow;
+            @else
+                green;
+            @endif font-size: 28px; margin-left: 12px;">
+            {{ $juego->valoracion_juego }}
+        </p>
+    </div>
+</div>
                     </div>
 
                     <!-- Resto de la información -->
@@ -139,7 +148,7 @@
                                         @if ($tipo->id === $review->tipo_review)
                                             <img src="{{ asset($tipo->imagen_val) }}" alt="{{ $tipo->nombre_val }}"
                                                 style="max-width: 48px;">
-                                            <p>{{ $tipo->nombre_val }}</p>
+                                            <h3>{{ $tipo->nombre_val }}</h3>
                                         @endif
                                     @endforeach
                                 </div>
